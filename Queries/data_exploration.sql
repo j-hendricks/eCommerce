@@ -44,5 +44,33 @@ FROM customer
 GROUP BY hasanyapp
 ORDER BY "Total Bought" DESC;
 
-SELECT * FROM top_sellers
+SELECT * FROM customer
 
+SELECT AVG(boughtperlikeratio) as "Buying Ratio", Max(boughtperlikeratio) as "Max"
+FROM country;
+
+SELECT countrycode, SUM(productsbought) as "Products Bought"
+FROM customer
+GROUP BY countrycode
+ORDER BY "Products Bought" DESC;
+
+SELECT language, SUM(productsbought) as "Products Bought"
+FROM customer
+GROUP BY language
+ORDER BY "Products Bought" DESC;
+
+SELECT country, AVG(productspassrate) as "Pass Rate"
+FROM customer
+GROUP BY country
+ORDER by "Pass Rate" DESC;
+
+SELECT hasprofilepicture, SUM(productsbought), SUM(productssold)
+FROM customer 
+GROUP BY hasprofilepicture;
+
+SELECT * FROM gender_and_country;
+
+SELECT country, AVG(meanproductssold) as "Average"
+FROM gender_and_country
+GROUP BY country
+ORDER BY "Average" DESC;
