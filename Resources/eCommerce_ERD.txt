@@ -1,0 +1,36 @@
+User
+-
+identifierHash bigint
+type varchar
+country varchar
+language varchar
+socialNbFollowers int
+etc
+
+Country
+-
+country varchar pk
+buyers int
+topbuyers int
+topbuyerratio float
+femalebuyers int
+etc
+
+
+Gender
+-
+country varchar
+sex varchar
+nbsellers int 
+meanproductssold float
+meanproductslisted float
+etc
+
+Top_Sellers
+-
+country varchar
+sellers int
+topsellers int
+topsellerratio float
+femalesellersratio float
+etc
