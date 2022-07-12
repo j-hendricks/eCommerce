@@ -155,3 +155,89 @@ FROM sellers
 WHERE productssold > 10
 GROUP BY hasprofilepicture;
 
+SELECT * from top_sellers;
+
+SELECT country, sellers, 100 * sellers / (SELECT SUM(sellers) FROM top_sellers) as  "Proportion of Sellers (%)"
+INTO sellers_summary
+FROM top_sellers
+ORDER BY sellers DESC;
+
+SELECT country, totalproductssold, 100 * totalproductssold / (SELECT SUM(totalproductssold) FROM top_sellers) as  "Proportion of Products Sold (%)"
+FROM top_sellers
+ORDER BY totalproductssold DESC;
+
+
+SELECT * FROM gender_and_country;
+
+SELECT country, SUM(totalproductssold)
+FROM gender_and_country
+GROUP BY country
+ORDER BY sum DESC;
+
+DROP TABLE IF EXISTS buyers_by_country;
+
+CREATE TABLE buyers_by_country(
+	country_type VARCHAR,
+	percent_buyers float
+);
+
+INSERT INTO buyers_by_country (country_type, percent_buyers)
+VALUES ('France', 100 *(SELECT MAX(buyers) FROM country) / (SELECT SUM(buyers) from country));
+
+INSERT INTO buyers_by_country (country_type, percent_buyers)
+VALUES ('Outside France', 100 - (SELECT percent_buyers FROM buyers_by_country))
+
+SELECT * FROM buyers_by_country;
+
+
+
+-- How likely are people from other countries to sign up in a C2C website?
+
+SELECT * FROM country;
+
+SELECT country, buyers
+FROM country
+ORDER BY buyers DESC;
+
+SELECT *
+INTO foregin_buyers
+FROM country
+ORDER BY buyers DESC
+OFFSET 1;
+
+SELECT SUM(buyers)
+FROM foregin_buyers;
+
+SELECT MAX(buyers)
+FROM country;
+
+SELECT SUM(buyers)
+from country;
+
+
+
+SELECT (SUM(CASE WHEN buyers < (SELECT MAX(buyers) FROM country) THEN buyers ELSE buyers*0 END)) FROM country;
+
+
+-- Are e-commerce users interested in social network feature?
+
+SELECT * FROM customer;
+
+SELECT COUNT(identifierhash), SUM(socialnbfollowers) / COUNT(identifierhash), SUM(socialnbfollows) / COUNT(identifierhash)
+FROM customer
+
+SELECT COUNT(identifierhash), SUM(socialnbfollowers) / COUNT(identifierhash), SUM(socialnbfollows) / COUNT(identifierhash)
+FROM customer
+WHERE dayssincelastlogin > 365
+
+SELECT COUNT(identifierhash) , SUM(socialnbfollowers) / COUNT(identifierhash), SUM(socialnbfollows) / COUNT(identifierhash)
+FROM customer
+WHERE dayssincelastlogin < 365
+
+
+
+
+
+
+
+
