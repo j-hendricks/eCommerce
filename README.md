@@ -17,7 +17,13 @@ The number of products wished is a better indicator of the number of products bo
 
 Surprisingly, those without a profile picture were more likely to have logged in recently, compared to those without a profile picture.
 
-![profile_picture_summary](profile_picture_summary.png)
+![profile_picture_stats](profile_picture_stats.png)
+
+![Top_Selling_Countries](Top_Selling_Countries.png)
+
+![Top_Buying_Countries](Top_Buying_Countries.png)
+
+![offline_summary](offline_summary.png)
 
 
 ## Conclusion
