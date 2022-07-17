@@ -11,6 +11,13 @@ To answer these questions, SQL was used to organize the data and perform calcula
 
 ## Results
 
+The number of products wished is a better indicator of the number of products bought than the number of products liked. 
+
+![product_summary](product_summary.png)
+
+Surprisingly, those without a profile picture were more likely to have logged in recently, compared to those without a profile picture.
+
+![profile_picture_summary](profile_picture_summary.png)
 
 
 ## Conclusion
